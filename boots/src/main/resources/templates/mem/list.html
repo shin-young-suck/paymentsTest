@@ -1,0 +1,42 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+    <head>
+		<meta charset="UTF-8">
+	</head>
+<body>
+       <table class="table">
+			<thead>
+				<tr>
+					<th>Mnum</th>
+					<th>id</th>
+					<th>pw</th>
+					<th>phone</th>
+					<th>email</th>
+					<th>name</th>
+					<th>address</th>
+					<th>address_detail</th>
+					<th>signup_time</th>
+					<th>birth</th>
+					<th>grade</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="mem:${memList}">
+				    <td th:text="${mem.Mnum}"></td>
+					<td th:text="${mem.id}"></td>
+					<td th:text="${mem.pw}"></td>
+					<td th:text="${mem.phone}"></td>					
+					<td th:text="${mem.email}"></td>
+					<td th:text="${mem.name}"></td>
+					<td th:text="${mem.address}"></td>
+					<td th:text="${mem.address_detail}"></td>
+					<td th:text="${mem.signup_time}"></td>
+					<td th:text="${mem.birth}"></td>
+					<td th:text="${mem.grade}"></td>
+
+					
+				</tr>		
+			</tbody>
+		</table>
+</body>
+</html>
