@@ -14,8 +14,6 @@
 					<th>title</th>
 					<th>count</th>
 					<th>price</th>
-					<th>member_id(mem.name)</th>
-					<th>cate_num(cate.cate_num)(sub)</th>
 					<th>basket.count</th>
 				</tr>
 			</thead>
@@ -26,14 +24,6 @@
 					<td th:text="${basket.item.title}"></td>					
 					<td th:text="${basket.item.count}"></td>
 					<td th:text="${basket.item.price}"></td>
-					<td>
-						<span></span>
-						(<span></span>)
-					</td>
-					<td>
-						(<span></span>)
-						(<span></span>)
-					</td>
 					<td>
 						<form action="/itemBasket/update.do" method="post">
 							<input type="hidden" name="basketNum" th:value="${basket.basketNum}">

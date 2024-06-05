@@ -18,10 +18,9 @@
 </style>
 
 <body>
-        <header th:insert="header_nav.html"></header>
-		<h1>상점</h1>
+    <header th:insert="header_nav.html"></header>
     <main th:each="item:${itemList}">
-       
+        
         <section>
             <ul class="product_list_container" id="productList">
                 
@@ -32,20 +31,7 @@
             </a>
                 <p th:text="${item.name}"></p>
                 <p th:text="${item.price}"></p>
-                <p>
-						<form action="/itemBasket/insert.do" method="post">
-							<input type="hidden" name="itemNum" th:value="${item.itemNum}">
-							<div class="input-group">
-							  <select class="form-select" name="count">
-							    <option selected value="1">1</option>
-							    <option value="2">2</option>
-							    <option value="3">3</option>
-							    <option value="4">4</option>
-							  </select>
-							  <button class="btn btn-outline-primary" type="submit">추가</button>
-							</div>
-						</form>
-				</p>
+               
             </ul>
                 
                

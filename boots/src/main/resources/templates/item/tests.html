@@ -5,23 +5,50 @@
 <title>Insert title here</title>
 
 <style>
+
 .product> .MAIN_IMG{
-    width: 100px;
-    height: 100px;
+    float: left;
+    width: 500px;
+    height: 500px;
+}
+
+.product> .input-group {
+    width: 200px;
+}
+
+.product> form {
+    float: left;
+    margin-right: 10px;
 }
 
 </style>
 
-<body>
-		<h1>img 상세</h1>
-      
-    
+<body>  
+        <header th:insert="header_nav.html"></header>
+       
         <main th:each="item:${boardTest}">
         <section>
             <ul class="product_list_container" id="productList">
                 
             <ul class="product">
-            <p th:text="${item.name}"></p>   
+            <img class="MAIN_IMG" src="" alt="" th:src="@{/public/img/{img}(img=${item.mainImg})}" >
+            <p style="font-size:200%" th:text="${item.name}"></p>  
+            <p style="font-size:200%" th:text="|${#numbers.formatInteger(item.price, 3, 'COMMA')}원|"></p> 
+            <p>
+						<form action="/itemBasket/insert.do" method="post">
+							<input type="hidden" name="itemNum" th:value="${item.itemNum}">
+							<div>
+							  <select name="count">
+							    <option selected value="1">1</option>
+							    <option value="2">2</option>
+							    <option value="3">3</option>
+							    <option value="4">4</option>
+							  </select>
+							  <button class="btn btn-outline-primary" type="submit">장바구니 추가</button>
+							</div>
+						</form>
+						      <button class="btn btn-outline-danger">바로구매</button>
+			</p> 
             </ul>
                
                

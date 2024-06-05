@@ -7,7 +7,6 @@
 	<header th:insert="header_nav.html"></header>
 	<div class="container-lg">
 		<blockquote class="blockquote">
-			<h1 class="h1">상품 등록</h1>
 		</blockquote>
 		  	
 	  	<form action="/item/seller/insert.do" method="post" name="itemForm" enctype="multipart/form-data">
@@ -30,8 +29,9 @@
 			<p class="input-group">
 			  <label for="itemFormCateNum" class="input-group-text">카테고리</label>
 			  <select name="cateNum" class="form-control" id="itemFormCateNum" >
-			  	<option value="1">가전</option>
-		  		<option value="2">컴퓨터</option>
+			  	<option value="1">모니터</option>
+		  		<option value="2">마우스</option>
+		  		<option value="3">키보드</option>
 			  </select>
 			</p>
 			<p class="input-group">
