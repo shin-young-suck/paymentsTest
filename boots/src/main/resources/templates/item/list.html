@@ -21,12 +21,15 @@
         <header th:insert="header_nav.html"></header>
 		<h1>상점</h1>
     <main th:each="item:${itemList}">
-      
+       
         <section>
             <ul class="product_list_container" id="productList">
                 
             <ul class="product">
-                <img class="MAIN_IMG" src="" alt="" th:src="@{/public/img/{img}(img=${item.mainImg})}">
+            <a th:href="@{/item/view/{itemNum}(itemNum=${item.itemNum})}">
+                <img class="MAIN_IMG" src="" alt="" th:src="@{/public/img/{img}(img=${item.mainImg})}" >
+                <p input type="hidden" name="itemNum" th:value="${item.itemNum}"></p>
+            </a>
                 <p th:text="${item.name}"></p>
                 <p th:text="${item.price}"></p>
                 <p>

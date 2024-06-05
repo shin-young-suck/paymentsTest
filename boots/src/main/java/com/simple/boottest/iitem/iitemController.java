@@ -45,6 +45,13 @@ public class iitemController {
 		return "/item/list";
 	}
 	
+	@GetMapping("/view/{itemNum}")
+	public String boardd(Model model, @PathVariable Integer itemNum){
+		System.out.println(itemNum);
+		model.addAttribute("boardTest", ir.findByItemNum(itemNum));
+		return "/item/tests";
+	}
+	
 	
 	@GetMapping("/queryList.do")
 	public String queryList(Model model) {

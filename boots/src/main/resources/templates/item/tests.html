@@ -1,0 +1,35 @@
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<title>Insert title here</title>
+
+<style>
+.product> .MAIN_IMG{
+    width: 100px;
+    height: 100px;
+}
+
+</style>
+
+<body>
+		<h1>img 상세</h1>
+      
+    
+        <main th:each="item:${boardTest}">
+        <section>
+            <ul class="product_list_container" id="productList">
+                
+            <ul class="product">
+            <p th:text="${item.name}"></p>   
+            </ul>
+               
+               
+            </ul>
+        </section>
+        </main>
+		
+		
+
+</body>
+</html>

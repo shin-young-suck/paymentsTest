@@ -19,5 +19,7 @@ public interface itemRepository extends CrudRepository<iitemVo, Integer>{
 	public Iterable<Object[]> findAllWithCategoryWithMember();
 	
 	public Iterable<iitemVo> findAll();
-   
+	
+	public iitemVo findByItemNum(Integer itemNum);
+    
 }
