@@ -52,6 +52,24 @@ public class iitemController {
 		return "/item/tests";
 	}
 	
+	@GetMapping("/view/cates/{cateNum}")
+	public String catebb(Model model, @PathVariable int cateNum){
+		System.out.println(cateNum);
+		model.addAttribute("boardTests", ir.findByCateNum(cateNum));
+		return "/item/listca";
+	}
+	
+	@GetMapping("/view/names/{name}")
+	public String catebb(Model model, @PathVariable String name){
+		System.out.println(name);
+		model.addAttribute("boardNameTest", ir.findByName(name));
+		return "/item/listna";
+	}
+	
+	@GetMapping("/test/user/mypage")
+	public String mypage(String key, Model model) {
+		return "/item/tests";
+	}
 	
 	@GetMapping("/queryList.do")
 	public String queryList(Model model) {

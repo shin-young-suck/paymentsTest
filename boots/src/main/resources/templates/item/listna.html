@@ -1,8 +1,8 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-</head>
 <title>Insert title here</title>
+</head>
 
 <style>
 
@@ -18,10 +18,9 @@
 </style>
 
 <body>
-
-    <header th:insert="header_nav.html"></header>
-
-        <ul class="nav flex-column">
+     <header th:insert="header_nav.html"></header>
+     
+       <ul class="nav flex-column">
  				 <li class="nav-item">
    			 <a class="nav-link active" aria-current="page" href="#1">Active</a>
  				 </li>
@@ -38,22 +37,16 @@
   			  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
   		        </li>
 	   </ul>
+     
+     <main th:each="item:${boardNameTest}">
            
-    
-	     
-    <main th:each="item:${itemList}">
-           
-        
         <section>
             
         
             <ul class="product_list_container" id="productList">
                 
             <ul class="product">
-            <a th:href="@{/item/view/{itemNum}(itemNum=${item.itemNum})}">
                 <img class="MAIN_IMG" src="" alt="" th:src="@{/public/img/{img}(img=${item.mainImg})}" >
-                <p input type="hidden" name="itemNum" th:value="${item.itemNum}"></p>
-            </a>
                 <p th:text="${item.name}"></p>
                 <p th:text="${item.price}"></p>
                

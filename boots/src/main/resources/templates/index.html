@@ -4,6 +4,7 @@
    	<title>스프링 테스트</title>
    	<link href="/public/css/main.css" rel="stylesheet">
 </head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <body>
  	<header th:insert="header_nav.html"></header>
 	
@@ -16,4 +17,63 @@
 	</div>
 		
 </body>
+    <script type="text/javascript">
+	/* 챔피언 검색 관련 스크립트  */
+	var ref = [{"champname":"모니터1"},{"champname":"모니터2"},{"champname":"모니터3"},{"champname":"모니터4"},{"champname":"마우스1"},{"champname":"마우스2"},{"champname":"마우스3"},{"champname":"마우스4"},{"champname":"키보드1"},{"champname":"키보드2"},{"champname":"키보드3"},{"champname":"키보드4"}];
+
+	let championname = []
+	for ( let i in ref) {
+		championname.push(ref[i].champname)
+	}
+
+	var isComplete = false; //autoMaker 자식이 선택 되었는지 여부
+	$('#search_area').keyup(
+			function() {
+				var txt = $(this).val();
+				if (txt != '') { //빈줄이 들어오면
+					$('#autoMaker').children().remove();
+
+					ref.forEach(function(arg) {
+						if (arg.champname.indexOf(txt) > -1) {
+							$('#autoMaker').append(
+									$('<div>').text(arg.champname).attr({
+										'key' : arg.key
+									}));
+						}
+					});
+					$('#autoMaker').children().each(function() {
+						$(this).click(function() {
+							$('#search_area').val($(this).text());
+							$('#autoMaker').children().remove();
+							$("#search_area").focus();
+							isComplete = true;
+						});
+					});
+				} else {
+					$('#autoMaker').children().remove();
+				}
+			});
+	$('#search_area').keydown(function(event) {
+		if (isComplete) { //autoMaker 자식이 선택 되었으면 초기화
+			$('#insert_target').val('')
+		}
+	})
+
+	
+	$("#search_champ").click(function() {
+		let champname = $("#search_area").val()
+
+		if (champname == "" || championname.indexOf(champname) == -1) {
+			alert("상품 이름을 한글로 알맞게 적어주세요.")
+			$("#search_area").focus();
+		} else {
+			location.href = "./item/view/names/" + champname;
+		}
+	})
+	$("input[type=text]").on('keyup', function(e)
+		{ if(e.key==='Enter'||e.keyCode===13){
+			$("#search_champ").trigger('click'); } })
+	
+	
+</script>
 </html>

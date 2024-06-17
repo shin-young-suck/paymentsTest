@@ -16,11 +16,17 @@ public class testssqq {
 	
 	@Autowired
 	private itemRepository ir;
+	
 	@GetMapping("/main")
 	public String list(Model model){
 //		Iterable<ItemVo> itemList=ir.findAll();
 		model.addAttribute("itemList",ir.findAll());
-		return "/mem/tests";
+		return "/mem/testss";
+	}
+	
+	@GetMapping("/test/user/mypage")
+	public String mypage(String key, Model model) {
+		return "/mem/testss";
 	}
 
 }

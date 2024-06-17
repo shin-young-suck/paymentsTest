@@ -1,5 +1,7 @@
 package com.simple.boottest.iitem;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -21,5 +23,9 @@ public interface itemRepository extends CrudRepository<iitemVo, Integer>{
 	public Iterable<iitemVo> findAll();
 	
 	public iitemVo findByItemNum(Integer itemNum);
+	
+	public List<iitemVo> findByCateNum(int cateNum);
+	
+	public List<iitemVo> findByName(String name);
     
 }
