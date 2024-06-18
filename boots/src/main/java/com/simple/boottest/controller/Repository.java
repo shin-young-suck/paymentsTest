@@ -19,3 +19,5 @@ public interface Repository extends CrudRepository<Vo, Integer> {
 	public Optional<Vo> findByPhone(String phone);
 	
 }
+
+

@@ -21,12 +21,8 @@ public class testssqq {
 	public String list(Model model){
 //		Iterable<ItemVo> itemList=ir.findAll();
 		model.addAttribute("itemList",ir.findAll());
-		return "/mem/testss";
+		return "/mem/emailtestt";
 	}
-	
-	@GetMapping("/test/user/mypage")
-	public String mypage(String key, Model model) {
-		return "/mem/testss";
-	}
+
 
 }

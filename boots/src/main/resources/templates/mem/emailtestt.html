@@ -1,0 +1,29 @@
+<html lang="en" xmlns:th="http:/www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+      <header th:insert="header_nav.html"></header>
+     <h1>이메일테스트</h1>
+			<div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 200px)">
+				<form action="/mem/login" method="post" style="width: 400px;">
+				  <div class="mb-3 row">
+				    <label for="staticEmail" class="col-sm-2 col-form-label">id</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="staticEmail"  name="id" value="tlsdyd1973">
+				    </div>
+				  </div>
+				  <div class="mb-3 row">
+				    <label for="staticEmail" class="col-sm-2 col-form-label">email</label>
+				    <div class="col-sm-10">
+				      <input type="text" class="form-control" id="staticEmail"  name="email" value="tlstjr8323@naver.com">
+				    </div>
+				  </div>
+
+				  	<button type="submit" class="btn btn-success">전송</button>
+				  </div>
+				</form>
+			</div>   
+</body>
+</html>
