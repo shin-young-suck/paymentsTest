@@ -11,7 +11,6 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="PasswordResetToken")
-
 public class PasswordResetToken {
 	
 		 @Id

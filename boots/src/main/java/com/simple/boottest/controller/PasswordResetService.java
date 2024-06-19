@@ -22,7 +22,7 @@ public class PasswordResetService {
 	    public void createPasswordResetToken(String userEmail) {
 	        Vo user = userRepository.findByEmail(userEmail);
 	        if (user == null) {
-	            throw new RuntimeException("User not found");
+	            throw new RuntimeException("User not found1");
 	        }
 
 	        String token = UUID.randomUUID().toString();
