@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제 폼</title>
+    <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+</head>
+<body>
+    <h1>결제하기</h1>
+    <button id="payButton">결제</button>
+
+    <script>
+        document.getElementById('payButton').addEventListener('click', function() {
+            var IMP = window.IMP;
+            IMP.init('imp78251645');
+
+            IMP.request_pay({
+                pg: 'html5_inicis', // 사용할 PG사
+                pay_method: 'card', // 결제 수단
+                merchant_uid: 'order_' + new Date().getTime(), // 주문 ID
+                name: 'Test Order', // 주문 이름
+                amount: 10, // 결제 금액
+                buyer_email: 'buyer@example.com', // 구매자 이메일
+                buyer_name: '구매자', // 구매자 이름
+                buyer_tel: '010-1234-5678', // 구매자 전화번호
+                buyer_addr: '서울특별시 강남구 삼성동', // 구매자 주소
+                buyer_postcode: '123-456' // 구매자 우편번호
+            }, function (rsp) {
+                if (rsp.success) {
+                    // 결제가 성공하면 서버로 imp_uid를 보내 결제 검증
+                    var form = document.createElement("form");
+                    form.setAttribute("method", "post");
+                    form.setAttribute("action", "/payments/verify");
+
+                    var impUidField = document.createElement("input");
+                    impUidField.setAttribute("type", "hidden");
+                    impUidField.setAttribute("name", "impUid");
+                    impUidField.setAttribute("value", rsp.imp_uid);
+
+                    form.appendChild(impUidField);
+                    document.body.appendChild(form);
+                    form.submit();
+                } else {
+                    alert('결제에 실패하였습니다. 에러 내용: ' + rsp.error_msg);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

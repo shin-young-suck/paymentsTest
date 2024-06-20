@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제 폼</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <script src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+</head>
+<body>
+    <h1>결제하기</h1>
+    <button id="payButton">결제</button>
+
+    <script>
+        document.getElementById('payButton').addEventListener('click', function() {
+            var IMP = window.IMP;
+            IMP.init('imp78251645');
+            IMP.request_pay({
+                pg: 'html5_inicis', // 사용할 PG사
+                pay_method: 'card', // 결제 수단
+                merchant_uid: 'order_' + new Date().getTime(), // 주문 ID
+                name: 'Test Order', // 주문 이름
+                amount: 101, // 결제 금액
+                buyer_email: 'buyer@example.com', // 구매자 이메일
+                buyer_name: '구매자', // 구매자 이름
+                buyer_tel: '010-1234-5678', // 구매자 전화번호
+                buyer_addr: '서울특별시 강남구 삼성동', // 구매자 주소
+                buyer_postcode: '123-456' // 구매자 우편번호
+            }, function (rsp) {
+                if (rsp.success) {
+                	 var msg = '결제가 완료되었습니다.';
+                     alert(msg);
+                } else {
+                    alert('결제에 실패하였습니다111. 에러 내용: ' + rsp.error_msg);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

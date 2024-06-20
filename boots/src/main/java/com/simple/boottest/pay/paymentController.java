@@ -1,25 +1,29 @@
 package com.simple.boottest.pay;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 
-public class paymentController {
-	@Autowired
-    private paymentService paymentService;
+@Controller
+@RequestMapping("/payments")
+public class PaymentController {
+	
+	    @Autowired
+	    private IamportService iamportService;
 
-    @GetMapping("/payment")
-    public String showPaymentForm() {
-        return "payment-form";
-    }
+	    @GetMapping("/form")
+	    public String paymentForm() {
+	        return "paymentForm";
+	    }
 
-    @PostMapping("/process-payment")
-    public String processPayment(payment payment, Model model) {
-        boolean isSuccess = paymentService.processPayment(payment);
-        model.addAttribute("isSuccess", isSuccess);
-        model.addAttribute("payment", payment);
-        return "payment-result";
-    }
+//	    @PostMapping("/verify")
+//	    public String verifyPayment(@RequestParam String impUid, Model model) {
+//	        Map<String, Object> paymentInfo = iamportService.getPaymentByImpUid(impUid);
+//	        model.addAttribute("paymentInfo", paymentInfo);
+//	        return "paymentResult";
+//	    }
 }
